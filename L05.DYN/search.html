@@ -1,0 +1,88 @@
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="./css/myccs.css">
+        <script src="./jscript/myscript.js"></script>
+        <script src="./jscript/interact.min.js"></script>
+        <title > search images</title>
+
+    </head>
+    <body>
+        <ul class="nav">
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="search.html">Search images</a></li>
+            <li><a href="upload.html">Upload images</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+
+        <h1> What do you want to find?</h1>
+        <form action="" method="post">
+            Image caption<br/>
+            <input type="text" id="idcap" name="ImageCaption" value="" size="40" /><br/>
+            Image genre<br/>
+            <input type="text" id ="idgenre" name="ImageGenre" value="" size="40" /><br/>
+            Photoing location<br/>
+            <input type="text" id="idloc" name="PhotoLocation" value="" size="60" /><br/>
+            Photographer Name<br/>
+            <input type="text" id="idpname" name="PhotographerName" value="" size="40" /><br/>
+            <input type="submit" name="submit" onclick="checkupload()" />
+
+            <input type="reset" name="reset"  />
+        </form>
+        <p id="iduploadstatus"> search status: <br/> </p>
+
+        <!-- Refer http://www.w3schools.com/css/css_tooltip.asp
+        to add tooltips
+        or 
+        simply add a title working as tooltips
+        -->
+        <h1> Search result shows here.</h1>
+
+
+        <div id="searchresults" ondrop="drop(event)" ondragover="allowDrop(event)"  style="border: 1px blue solid; width: 200px; height: 64px; padding: 0px" >    
+            <img id="searchedimage1" title="search result1" alt="result1" src="./images/shenzhou.jpg" draggable="true" ondragstart="drag(event)" style="width: 60px; height: 60px;"/> 
+            <img id="searchedimage2" title="search result2" alt="result2" src="./images/tiangong.jpg" draggable="true" ondragstart="drag(event)" style="width: 60px; height: 60px; "/>
+            <img id="searchedimage3" title="search result3" alt="result3" src="./images/Koala_climbing_tree.jpg" draggable="true" ondragstart="drag(event)" style="width: 60px; height: 60px;"/>
+        </div>        
+        <br/><p>Left box: autoresize, right box: dragresize</p>
+        <!-- Refer http://www.w3schools.com/html/html5_draganddrop.asp
+        to add drag and drop
+        -->
+        <div id="playground" ondrop="drop(event)" ondragover="allowDrop(event)"  style="width: 400px; height: 400px; border: 2px solid red;  float: left" ></div>
+
+        <div id="resizebox" ondrop="drop(event)" ondragover="allowDrop(event)"  style="width: 400px; height: 400px; border: 2px solid red;  float: left" ></div>
+
+        <script>
+            interact('.resize-drag')
+                    .draggable({
+                        onmove: window.dragMoveListener
+                    })
+                    .resizable({
+                        preserveAspectRatio: true,
+                        edges: {left: true, right: true, bottom: true, top: true}
+                    })
+                    .on('resizemove', function (event) {
+                        var target = event.target,
+                                x = (parseFloat(target.getAttribute('data-x')) || 0),
+                                y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+                        // update the element's style
+                        target.style.width = event.rect.width + 'px';
+                        target.style.height = event.rect.height + 'px';
+
+                        // translate when resizing from top or left edges
+                        x += event.deltaRect.left;
+                        y += event.deltaRect.top;
+
+                        target.style.webkitTransform = target.style.transform =
+                                'translate(' + x + 'px,' + y + 'px)';
+
+                        target.setAttribute('data-x', x);
+                        target.setAttribute('data-y', y);
+                        target.textContent = Math.round(event.rect.width) + '×' + Math.round(event.rect.height);
+                    });
+        </script>
+
+    </body>
+</html>

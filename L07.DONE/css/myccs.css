@@ -1,0 +1,53 @@
+/*
+Here is the CSS formatting only for navigation bar
+*/
+ul.nav {
+    list-style-type: none;
+    border-radius: 25px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+ul.nav li {
+    
+    float: left;
+}
+
+ul.nav li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.nav li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+ul.nav li a.active {
+    color: white;
+    background-color: #4CAF50;
+}
+
+/* CSS for interactjs */
+.resize-drag {
+  background-color: #29e;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  border-radius: 8px;
+  padding: 2px;
+  margin: 2px 2px;
+
+  width: 120px;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+}
+
+
+

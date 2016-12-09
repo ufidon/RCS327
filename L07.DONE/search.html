@@ -1,0 +1,116 @@
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="./css/myccs.css">
+        <script src="./jscript/myscript.js"></script>
+        <script src="./jscript/interact.min.js"></script>
+        <title > search images</title>
+
+    </head>
+    <body onload="runGalleria()">
+        <ul class="nav">
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="search.html">Search images</a></li>
+            <li><a href="psearch.php">pSearch images</a></li>
+            <li><a href="upload.html">Upload images</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+
+        <h1> What do you want to find?</h1>
+        <!-- Refer to: http://www.w3schools.com/tags/att_input_pattern.asp
+        use patterns to check input
+        -->
+        <form >
+            Image caption<br/>
+            <input type="text" id="imgcap"  name="ImageCaption" value="" size="40"  title="At least one word character" /><br/>
+            Image genre<br/>
+            <input type="text" id="imggen"  name="ImageGenre" value="" size="40"  title="At least one word character" /><br/>
+            Photoing location<br/>
+            <input type="text" id="pholoc"  name="PhotoLocation" value="" size="60"  title="At least one word character" /><br/>
+            Photographer Name<br/>
+            <input type="text" id="phonam"  name="PhotographerName" value="" size="40"  title="At least one word character" /><br/>
+            <input type='button' onclick='ajaxFunction()' value='search images'/>
+
+            <input type="reset" name="reset"  />
+        </form>
+
+        <!-- Refer to https://www.tutorialspoint.com/ajax/ajax_database.htm -->
+        <script language="javascript" type="text/javascript">
+        <!-- 
+        //Browser Support Code
+            function ajaxFunction() {
+                var ajaxRequest;  // The variable that makes Ajax possible!
+                try {
+
+                    // Opera 8.0+, Firefox, Safari
+                    ajaxRequest = new XMLHttpRequest();
+                } catch (e) {
+
+                    // Internet Explorer Browsers
+                    try {
+                        ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+
+                        try {
+                            ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+
+                            // Something went wrong
+                            alert("Your browser broke!");
+                            return false;
+                        }
+                    }
+                }
+
+                // Create a function that will receive data
+                // sent from the server and will update
+                // div section in the same page.
+                ajaxRequest.onreadystatechange = function () {
+
+                    if (ajaxRequest.readyState == 4) {
+                        var ajaxDisplay = document.getElementById('galleria');
+                        ajaxDisplay.innerHTML = ajaxRequest.responseText;
+                        runGalleria();
+                    }
+                }
+
+                // Now get the value from user and pass it to
+                // server script.
+                var imgcap = document.getElementById('imgcap').value;
+                var imggen = document.getElementById('imggen').value;
+                var pholoc = document.getElementById('pholoc').value;
+                var phonam = document.getElementById('phonam').value;
+                var queryString = "?imgcap=" + imgcap;
+
+                queryString += "&imggen=" + imggen + "&pholoc=" + pholoc + "&phonam=" + phonam;
+                ajaxRequest.open("GET", "search.php" + queryString, true);
+                ajaxRequest.send(null);
+            }
+        //-->
+        </script>
+
+        <!-- Refer to: https://galleria.io/
+        -->
+        <h1> Search result shows here.</h1>
+
+        <div id="galleria" style="height:500px">
+
+        </div>
+
+
+
+        <!-- load jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+        <!-- load Galleria -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.4.7/galleria.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.4.7/themes/classic/galleria.classic.min.js"></script>
+        <script>
+            $(function runGalleria () {
+                Galleria.run('#galleria');
+            });
+        </script>
+
+
+    </body>
+</html>

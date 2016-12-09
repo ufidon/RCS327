@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title > about myself</title>        
+    </head>
+
+    <body>
+        <h1>Brief Introduction</h1>
+        <p>
+            I am Big Koala.<br>
+            I am from Australia.<br>
+            Welcome to my image gallery!
+        </p>
+        <figure>
+            <figcaption style='text-align:  center; width: 200px'>Big Koala</figcaption>
+            <img src="Koala_climbing_tree.jpg" alt="I am climbing a tree" style='width: 200px'/>
+        </figure>
+        <p>Image from <a href="https://en.wikipedia.org/wiki/Koala">Wikipedia</a></p>
+
+        <h1>My Voice</h1>
+        <audio controls = "controls" autoplay="autoplay">
+            <source src = "koalasound.ogg" />
+            Your browser does not support the audio element
+        </audio>
+        <p>Voice from <a href="https://www.videvo.net/video/koala-in-tree-2/1287">Videvo</a></p>
+
+        <h1>My Video</h1>
+        <video width = "320" height = "240" autoplay = "autoplay"
+               controls = "controls" >
+            <source src = "Koala2H264.mp4">
+            Your browser does not support the video element
+        </video>
+        <p>Video from <a href="https://www.freesoundeffects.com/searches/koala/">Freesoundeffects</a></p>
+        <h1>Hobbies</h1>
+        <ul>
+            <li>Climbing trees</li>
+            <li>Eating leaves</li>
+            <li>Swimming</li>
+        </ul>
+
+        <h1>Contact me</h1>
+        <address>
+            East coast<br>
+            Australia
+        </address>
+        <div id="map" style="width:400px;height:400px;background:yellow"></div>
+
+        <script>
+            function myMap() {
+                    var mapOptions = {
+                            center: new google.maps.LatLng(-33.615, 150.493),
+                            zoom: 10,
+                            mapTypeId: google.maps.MapTypeId.HYBRID
+                    };
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            }
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJbGNfNuF23YqVoTZKRDwBxCGEc3xKGwg&callback=myMap"></script>
+    </body>
+</html>

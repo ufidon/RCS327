@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="./css/myccs.css">
+        <script src="./jscript/myscript.js"></script>
+
+        <title > upload images</title>
+
+    </head>
+    <body>
+        <ul class="nav">
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="search.html">Search images</a></li>
+            <li><a href="psearch.php">pSearch images</a></li>
+            <li><a href="upload.html">Upload images</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+
+        <h1>
+            We upload images and their corresponding information here.
+        </h1>
+
+        <form action="uploadimg.php" method="post" enctype="multipart/form-data" style="border: 2px blue solid; padding: 10px">
+            <h2>Select image to upload</h2>
+            <input id="iduploadimage" type="file" name="fileupload" accept="image/*" onchange="previewImage(this)" />
+            <br/>
+            <img alt="image preview" src="#" id="idpreviewimage"/>
+
+
+            <h2> Information about the image</h2>
+
+            Image caption<br/>
+            <input type="text"  name="ImageCaption" value="" size="40" required pattern="(\w+\s*)+" title="At least one word character" /><br/>
+            Image genre<br/>
+            <input type="text"  name="ImageGenre" value="" size="40" required pattern="(\w+\s*)+" title="At least one word character" /><br/>
+            Photoing location<br/>
+            <input type="text"  name="PhotoLocation" value="" size="60" required pattern="(\w+\s*)+" title="At least one word character" /><br/>
+            Photographer Name<br/>
+            <input type="text"  name="PhotographerName" value="" size="40" required pattern="(\w+\s*)+" title="At least one word character" /><br/>
+
+            <input type="submit" name="submit" />
+
+            <input type="reset" name="reset"  />
+        </form>
+        <p id="iduploadstatus"> upload status: <br/> </p>
+
+    </body>
+</html>
